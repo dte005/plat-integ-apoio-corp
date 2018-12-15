@@ -1,0 +1,10 @@
+{%extends 'piac_home.html'%}
+{% load bootstrap %}
+{%block title%}PIAC Deletar{%endblock%}
+{%block conteudo%}
+<h1>Deseja deletar {{dado.numero}}</h1>
+<form method="POST">
+  {%csrf_token%}
+  <button class="btn btn-danger" type="submit">Deletar</button>
+</form>
+{%endblock%}

@@ -1,0 +1,21 @@
+{% extends 'pb_home.html' %}
+{%block conteudo%}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Função</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for dado in dados%}
+    <tr>
+      <th scope="row">{{dado.id}}</th>
+      <th scope="row"><a href="#">{{dado.nome}}</a></th>
+      <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.funcao}}</span></td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{%endblock%}

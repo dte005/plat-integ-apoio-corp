@@ -1,0 +1,10 @@
+{%extends 'piac_home.html'%}
+{% load bootstrap %}
+{%block title%}PIAC Criar{%endblock%}
+{%block conteudo%}
+<form method="POST">
+  {%csrf_token%}
+  {{form|bootstrap}}
+  <button class="btn btn-primary" type="submit">Salvar</button>
+</form>
+{%endblock%}
