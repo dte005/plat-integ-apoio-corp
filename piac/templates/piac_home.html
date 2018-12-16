@@ -9,7 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="{% static 'offcanvas/offcanvas.css'%}" rel="stylesheet">
-    <link href="{% static 'css/footer.css'%}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
@@ -17,6 +16,7 @@
       <div class="jumbotron">
       {%block menu_navegacao%}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <img src="{% static 'imagens/fogo.png' %}" alt="">
           <a class="navbar-brand mr-auto mr-lg-0" href="#">Plataforma IAC</a>
           <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
           <span class="navbar-toggler-icon"></span>
