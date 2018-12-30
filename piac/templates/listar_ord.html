@@ -1,64 +1,52 @@
-{%extends 'piac_home.html'%}
-{% load bootstrap %}
+{%extends 'piac_base.html'%}
 {%block title%}PIAC Lista{%endblock%}
-{%block menu_navegacao%}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand mr-auto mr-lg-0" href="#">Plataforma IAC</a>
-  <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Lawebsi <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Oportunidade</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="{%url 'lista_oportunidades'%}">Lista</a>
-          <a class="dropdown-item" href="{%url 'criar_op'%}">Criar</a>
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configurações</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="{%url 'pb_home'%}">Perfil</a>
-          <a class="dropdown-item" href="/admin/">Admin</a>
-          <a class="dropdown-item" href="{%url 'logout'%}">Logout</a>
-        </div>
-      </li>
-    </ul>
-    <!--<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Procurar" aria-label="Procurar">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
-    </form>-->
-  </div>
-</nav>
-{%endblock%}
 {%block conteudo%}
+
+<div class="align-items-center p-3 my-3 text-white-50 bg-secondary rounded shadow-sm">
+      <!--<img class="mr-3" src="assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">-->
+  <div class="lh-100">
+    <div class="row">
+      <div class="col">
+        <h6 class="mb-0 text-white lh-100">Ordens de Serviço</h6>
+        <small>Lawebsi</small>
+      </div>
+      <div class="col">
+
+      </div>
+      <div class="col">
+        <form class="form-inline">
+          <input type="text" name="pesquisa" id="pesquisa">
+          <button type="submit" class="btn btn-primary btn-sm" name="button">Pesquisar</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div class="my-3 p-3 bg-white rounded shadow-sm">
     <table class="table">
       <thead class="thead-dark">
-        <tr>
-          <th scope="col">OS</th>
+        <tr class="grid-row-header">
+          <th scope="col" ">OS</th>
           <th scope="col">Recurso</th>
-          <th scope="col">GDG</th>
-          <th scope="col">Mobile</th>
-          <th scope="col">Qualidade</th>
-          <th scope="col">Segurança</th>
-          <th scope="col">Relatório</th>
-          <th scope="col">Despesas</th>
+          <th scope="col" >GDG</th>
+          <th scope="col" >Mobile</th>
+          <th scope="col" >Qualidade</th>
+          <th scope="col" >Segurança</th>
+          <th scope="col" >Relatório</th>
+          <th scope="col" >Despesas</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="text-dark">
         {% for dado in dados %}
         <tr>
-          <th scope="row"><a href="#">{{dado.numero}}</a><a href="{%url 'deletar_ordem' dado.numero %}"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+          <th scope="row"><a href="{% url 'detalhar_or' dado.numero %}">{{dado.numero}}</a><a href="{%url 'deletar_ordem' dado.numero %}"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
+          <td width="120px">
           {%for index in dado.recursos.all %}
-            <td><span class="badge badge-pill bg-light align-text-bottom">{{index}}</span></td>
+            <span class="badge badge-pill bg-light align-text-bottom">{{index}}</span>
           {%endfor%}
+          </td>
           <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.gpg_status}}</span></td>
           <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.mobile_status}}</span></td>
           <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.crol_status}}</span></td>
@@ -66,9 +54,8 @@
           <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.rels_status}}</span></td>
           <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.reld_status}}</span></td>
         </tr>
-
         {%endfor%}
       </tbody>
     </table>
-  </div>
+</div>
   {%endblock%}

@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{%block title%}PIAC{%endblock%}</title>
+    <!--<link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme-spacelab.min.css'%}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=" Plataforma de apoio corporativo para criação e controle de ordens de serviço">
+    <meta name="author" content="Daniel Silva">
+    <link href="{% static 'offcanvas/offcanvas.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          {%block navegacao%}
+            <nav class="navbar navbar-expand-lg navbar-dark rounded bg-dark">
+              <a class="navbar-brand mr-auto mr-lg-0" href="{%url 'piac_home'}"><span class="text-danger"><em>Plataforma</em></span><span class="text-warning"> <em><strong>IAC</strong></em></span></a>
+              <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{%url 'piac_home'}">Lawebsi</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Oportunidade</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+                      <a class="dropdown-item" href="{%url 'lista_oportunidades'%}">Lista</a>
+                      <a class="dropdown-item" href="{%url 'criar_op'%}">Criar</a>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{%url 'lista_ordens'%}">Ordens de Serviço</a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configurações</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                      <a class="dropdown-item" href="{%url 'listar_funcionario'%}">Perfil</a>
+                      <a class="dropdown-item" href="/admin/">Admin</a>
+                      <a class="dropdown-item" href="{%url 'logout'%}">Logout</a>
+                    </div>
+                  </li>
+                  {%endif%}
+                </ul>
+                <!--<form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Procurar" aria-label="Procurar">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
+                </form>-->
+              </div>
+            </nav>
+          {%endblock%}
+        </div>
+      </div>
+      <div class="row">
+        <br>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="jumbotron p-3 p-md-5 text-dark rounded bg-white">
+            {%block conteudo%}
+            {%endblock%}
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-end">
+        <div class="col">
+          {%block rodape%}
+          <footer><small class="text-muted">@desenvolvido por Lawebsi v1.0</small></footer>
+
+          {%endblock%}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>-->
+
+      <script src="{% static 'js/vendor/popper.min.js'%}"></script>
+      <script src="{% static 'js/vendor/holder.min.js'%}"></script>
+      <script src="{% static 'offcanvas/offcanvas.js'%}"></script>
+
+
+      <!--Carregando o jquery primeiro que o bootstrap-->
+       <script src="{% static 'js/jquery-3.3.1.js'%}"></script>
+       <script src="{% static 'js/bootstrap.js'%}"></script>
+  </body>
+</html>

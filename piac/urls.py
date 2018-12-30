@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import piachome, listarOportunidades, mylogout, myOportunidade, detailOportunidade, myOrder, listarOrdens, deletarOportunidade, deletarOrdem
+from .views import piachome, listarOportunidades, mylogout, myOportunidade, detailOportunidade, myOrder, listarOrdens, deletarOportunidade, deletarOrdem, detailOrdem
 
 urlpatterns = [
-    path('home/', piachome, name='piac_home'),
+    path('', piachome, name='piac_home'),
     path('listaop/', listarOportunidades, name='lista_oportunidades'),
     path('logout/', mylogout, name='logout'),
     path('criarordem/<int:id>', myOrder, name='criar_ordem'),
@@ -10,5 +10,6 @@ urlpatterns = [
     path('listarordens/', listarOrdens, name='lista_ordens'),
     path('deletarord/<str:numero>', deletarOrdem, name='deletar_ordem'),
     path('deletarop/<int:id>', deletarOportunidade, name='deletar_op'),
+    path('detalharor/<str:numero>', detailOrdem, name='detalhar_or'),
     path('detalharop/<int:id>', detailOportunidade, name='detalhar_op'),
 ]

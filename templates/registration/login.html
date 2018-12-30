@@ -1,26 +1,52 @@
-{%extends 'piac_home.html'%}
+{% load static %}
 {% load bootstrap %}
-{%block title%}PIAC Login{%endblock%}
-{%block menu_navegacao%}
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand mr-auto mr-lg-0" href="#">Plataforma IAC</a>
-    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Login PIAC</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="{% static 'offcanvas/offcanvas.css'%}" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="text-center">
+  <div class="container">
+      <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+          <form class="form-signin" method="POST">
+            <!--<img width="72" height="72" class="mb-4" alt="" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg">-->
+            <h1 class="h3 mb-3 font-weight-normal" align="center">Entre com seu login</h1>
+            {%csrf_token%}
+            {{ form|bootstrap }}
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a class="btn btn-primary" href="{% url 'piac_home' %}">Voltar</a>
+          </form>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+  </div>
 
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Lawebsi <span class="sr-only">(current)</span></a>
-        </li>
-  </nav>
-{%endblock%}
-{%block conteudo%}
-<h1>Página de Login</h1>
-<form method="POST">
-  {%csrf_token%}
-  {{ form|bootstrap }}
-    <button type="submit" class="btn btn-primary">Login</button>
-    <a class="btn btn-primary" href="{% url 'piac_home' %}">Voltar</a>
-</form>
-{%endblock%}
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>-->
+<script src="{% static 'js/vendor/popper.min.js'%}"></script>
+<script src="{% static 'js/vendor/holder.min.js'%}"></script>
+<script src="{% static 'offcanvas/offcanvas.js'%}"></script>
+<!--Carregando o jquery primeiro que o bootstrap-->
+<script src="{% static 'js/jquery-3.3.1.js'%}"></script>
+<script src="{% static 'js/bootstrap.js'%}"></script>
+
+</body>
+
+</html>

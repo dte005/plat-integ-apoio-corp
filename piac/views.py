@@ -10,13 +10,26 @@ def piachome(request):
 
 @login_required
 def listarOportunidades(request):
-    dados = OportunidadeRecentes.objects.all()
+    termo_busca = request.GET.get('pesquisa', None)
+
+    if termo_busca:
+        dados = OportunidadeRecentes.objects.all()
+        dados = dados.filter(nome__icontains = termo_busca)
+    else:
+        dados = OportunidadeRecentes.objects.all()
+
     return render(request, 'listar_oport.html', {'dados':dados})
 
 
 @login_required
 def listarOrdens(request):
-    dados = OrdensDeServico.objects.all()
+    termo_busca = request.GET.get('pesquisa')
+    if termo_busca:
+        dados = OrdensDeServico.objects.all()
+        dados = dados.filter(numero__cod_projeto__icontains = termo_busca)
+    else:
+        dados = OrdensDeServico.objects.all()
+
     return render(request, 'listar_ord.html', {'dados':dados})
 
 @login_required
@@ -68,6 +81,16 @@ def detailOportunidade(request, id):
 
     return render(request, 'criar_oport.html', {'form':form})
 
+@login_required
+def detailOrdem(request, numero):
+    query = OrdensDeServico.objects.get(numero__cod_projeto = numero)
+    form = createOrdemForm(request.POST or None, instance=query)
+
+    if form.is_valid():
+        form.save()
+        return redirect('lista_ordens')
+
+    return render(request, 'criar_ord.html', {'form':form})
 
 @login_required
 def myOrder(request, id):
