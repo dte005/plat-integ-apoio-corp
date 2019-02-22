@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import OportunidadeRecentes, OrdensDeServico
 from django.contrib.auth import logout
 from .forms import createOportunidadeForm, createOrdemForm
+#import pdb; pdb.set_trace() - ferramenta para debug
 
 def piachome(request):
     return render(request, 'piac_home.html')
@@ -81,6 +82,7 @@ def detailOportunidade(request, id):
 
     return render(request, 'criar_oport.html', {'form':form})
 
+
 @login_required
 def detailOrdem(request, numero):
     query = OrdensDeServico.objects.get(numero__cod_projeto = numero)
@@ -92,6 +94,7 @@ def detailOrdem(request, numero):
 
     return render(request, 'criar_ord.html', {'form':form})
 
+#TODO: mudar o carregamento do form para instanciar a variavel query diretamente
 @login_required
 def myOrder(request, id):
     query = get_object_or_404(OportunidadeRecentes, pk=id)
