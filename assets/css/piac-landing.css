@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Allerta+Stencil');
+
+*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  background-color: rgb(240,240,240);
+  color: black;
+}
+
+p{
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5{
+  font-family: 'Playfair Display', serif;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+/*Inicio da estilização do sistema*/
+#main{
+  display: grid;
+  grid-template-areas: "nav" "label" "header" "content" "footer";
+  grid-template-rows: 40px 70px 600px 400px 50px;
+}
+
+nav{
+  grid-area: nav;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #363636;
+  /*background-image: linear-gradient(rgba(169,169,169, 1),rgba(105,105,105, 0.8),rgba(128,128,128, 1));*/
+  border: 1px solid #363636;
+  color: white;
+}
+
+.nav-title{
+  margin-left: 20px;
+
+}
+
+.nav-right p{
+  color: white;
+  font-family: "Allerta Stencil", Sans-serif;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.label{
+  grid-area: label;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #EEE9E9;
+}
+
+.label-title a{
+  font-family: "Allerta Stencil", Sans-serif;
+  font-weight: bold;
+  color: black;
+  opacity: 0.8;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+header{
+  grid-area: header;
+  background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(240,240,240,0.5) 70%),
+              url("../imagens/plat.jpg");
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header a{
+  margin-bottom: 20px;
+}
+
+.conteudo{
+  grid-area: content;
+  background-color: #EEE9E9;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cards{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards .cards-image{
+  text-align: center;
+}
+
+.cards .cards-image img{
+  width: 80%;
+}
+
+.cards .cards-conteudo{
+  text-align: center;
+}
+
+footer{
+  grid-area: footer;
+  background-color: #1A1A1A;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+footer a{
+  text-decoration:none; color:white;
+}
+
+footer ul li{
+  display: inline;
+  color:white;
+  font-size:30px;
+}
+
+@media screen and (max-width:1208px){
+
+  #main{
+    display: grid;
+    grid-template-areas: "nav" "label" "header" "content" "footer";
+    grid-template-rows: 40px 70px 600px 800px 50px;
+  }
+}
+
+@media screen and (max-width:576px){
+  #main{
+    display: grid;
+    grid-template-areas: "nav" "label" "header" "content";
+    grid-template-rows: 100px 150px 600px 1400px;
+  }
+
+  .label{
+    flex-wrap: wrap;
+  }
+
+  footer{
+    display: none;
+  }
+}

@@ -6,7 +6,7 @@ from .forms import createOportunidadeForm, createOrdemForm
 #import pdb; pdb.set_trace() - ferramenta para debug
 
 def piachome(request):
-    return render(request, 'piac_home.html')
+    return render(request, 'piac-landing.html')
 
 
 @login_required

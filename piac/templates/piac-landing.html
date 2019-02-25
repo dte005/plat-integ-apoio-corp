@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{%block title%}P.I.A.C. System{%endblock%}</title>
+    <meta name="description" content=" Plataforma de apoio corporativo para criação e controle de ordens de serviço">
+    <meta name="author" content="Daniel Silva">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'css/piac-landing.css'%}">
+
+  </head>
+  <body>
+    <div id="main">
+      <nav>
+        <div class="nav-title w3-bar">
+          <a href="{%url 'piac_home'}" class="w3-bar-item w3-button"><i class="fas fa-home" style="margin-right:5px; font-size: 20px;"></i> Home</a>
+          <a href="#" class="w3-bar-item w3-button">About</a>
+          <a href="#" class="w3-bar-item w3-button">Vantagens</a>
+          <a href="#" class="w3-bar-item w3-button">Links</a>
+        </div>
+        <div class="nav-right">
+          <p>Lawebsi</p>
+        </div>
+      </nav>
+      <section class="label">
+        <div class="label-title">
+          <a href="{%url 'piac_home'}">Plataforma<span style="color:white; background-color:red; padding: 10px;"><em>I.A.C.</em></span></a>
+        </div>
+        <div class="">
+          <a href="#" class="w3-button w3-blue w3-round-large">Register</a>
+        </div>
+      </section>
+      <header>
+        <div>
+          {% if user.is_authenticated %}
+            <a href="{% url 'login' %}" class="w3-button w3-blue w3-border w3-border-blue w3-round-large" style="font-size: 20px;">Logout</a>
+          {%else%}
+            <a href="{% url 'login' %}" class="w3-button w3-blue w3-border w3-border-blue w3-round-large" style="font-size: 20px;">Login</a>
+          {%endif%}
+        </div>
+      </header>
+
+      <section class="conteudo">
+          <div class="cards">
+            <div class="cards-image">
+              <img src="{% static 'imagens/briefcase.css'%}" alt="Briefcase">
+            </div>
+            <div class="cards-conteudo">
+              <h2>Simple</h2>
+              <p>A very <strong>simple </strong>plataform to use</p>
+            </div>
+          </div>
+
+          <div class="cards">
+            <div class="cards-image">
+              <img src="assets/imagens/diamond.png" alt="Diamond">
+            </div>
+            <div class="cards-conteudo">
+              <h2>Fast</h2>
+              <p>A very <strong>fast </strong>sytem to use</p>
+            </div>
+          </div>
+
+          <div class="cards">
+            <div class="cards-image">
+              <img src="assets/imgs/heart.png" alt="Heart">
+            </div>
+            <div class="cards-conteudo">
+              <h2>Easy</h2>
+              <p>A very <strong>easy </strong>system to use</p>
+            </div>
+          </div>
+
+          <div class="cards">
+            <div class="cards-image">
+              <img src="assets/imgs/laptop.png" alt="Laptop">
+            </div>
+            <div class="cards-conteudo">
+              <h2>Cheap</h2>
+              <p>A very <strong>technological </strong>plataform to use</p>
+            </div>
+          </div>
+      </section>
+
+      {%block rodape%}
+      <footer>
+        <a href="mailto: danieldts2013@gmail.com" target="_blank"><p>Contact me</p></a>
+        <p>Desenvolvido por @Daniel</p>
+        <ul>
+            <li><a href="https://www.facebook.com/dtesilva" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+            <li><a href="https://twitter.com/danieldts010614" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+            <li><a href="https://github.com/dte005" target="_blank"><i class="fab fa-github-square"></i></a></li>
+        </ul>
+      </footer>
+      {%endblock%}
+    </div>
+  </body>
+</html>
