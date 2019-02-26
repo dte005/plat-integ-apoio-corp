@@ -19,7 +19,7 @@ def listarOportunidades(request):
     else:
         dados = OportunidadeRecentes.objects.all()
 
-    return render(request, 'listar_oport.html', {'dados':dados})
+    return render(request, 'piac-system.html', {'dados':dados})
 
 
 @login_required
