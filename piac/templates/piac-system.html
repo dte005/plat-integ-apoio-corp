@@ -3,11 +3,10 @@
 <html lang="pt-br" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Piac Plataform</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Plataforma P.I.A.C.</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <meta name="description" content=" Plataforma de apoio corporativo para criação e controle de ordens de serviço">
     <meta name="author" content="Daniel Silva">
-
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/piac-system.css'%}">
@@ -46,36 +45,36 @@
 
         </div>
         {%block conteudo%}
-        <div class="content-right">
-          <div class="content-right-title">
-            <h1>Oportunidades</h1>
-            <hr>
-          </div>
-          <div class="content-right-table">
-            <div class="container">
-              <div class="container-search">
-                <h3>Recentes</h3>
-                <form class="form-search">
-                  <input type="text" name="pesquisa" id="pesquisa"  class="w3-input w3-border">
-                  <button type="submit" class="w3-button w3-red" name="button"><i class="fas fa-search"></i></button>
-                </form>
-              </div>
+          <div class="content-right">
+            <div class="content-right-title">
+              <h1>Oportunidades</h1>
+              <hr>
+            </div>
+            <div class="content-right-table">
+              <div class="container">
+                <div class="container-search">
+                  <h3>Recentes</h3>
+                  <form class="form-search">
+                    <input type="text" name="pesquisa" id="pesquisa"  class="w3-input w3-border">
+                    <button type="submit" class="w3-button w3-red" name="button"><i class="fas fa-search"></i></button>
+                  </form>
+                </div>
 
-              {% for dado in dados%}
-              <div class="container-table">
-                <div class="container-table-id">
-                  <div>
-                    <i class="fas fa-lightbulb" style="color:green;"></i>
+                {% for dado in dados%}
+                <div class="container-table">
+                  <div class="container-table-id">
+                    <div>
+                      <i class="fas fa-lightbulb" style="color:green;"></i>
+                    </div>
+                    <div>
+                      <a href="{%url 'detalhar_op' dado.id%}">{{dado.nome}}</a>
+                      <p>{{dado.descricao}} <a href="{% url 'deletar_op' dado.id %}"><i class="fas fa-trash-alt" style="font-size:15px;"></i></a></p>
+                    </div>
                   </div>
-                  <div>
-                    <a href="{%url 'detalhar_op' dado.id%}">{{dado.nome}}</a>
-                    <p>{{dado.descricao}} <a href="{% url 'deletar_op' dado.id %}"><i class="fas fa-trash-alt" style="font-size:15px;"></i></a></p>
+                  <div class="container-table-create">
+                    <a href="{%url 'criar_ordem' dado.id%}" class="w3-button w3-blue"><i class="fas fa-plus-square"> Criar OS</i></a>
                   </div>
                 </div>
-                <div class="container-table-create">
-                  <a href="{%url 'criar_ordem' dado.id%}" class="w3-button w3-blue"><i class="fas fa-plus-square"> Criar OS</i></a>
-                </div>
-              </div>
               {%endfor%}
               <!--Fim do item que irá se repetir no django-->
 

@@ -1,9 +1,16 @@
 {%extends 'piac-system.html'%}
 {% load bootstrap %}
 {%block conteudo%}
-<h1>Deseja deletar {{dado.numero}}</h1>
-<form method="POST">
-  {%csrf_token%}
-  <button class="btn btn-danger" type="submit">Deletar</button>
-</form>
+
+<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:80vw;">
+  <div class="w3-panel w3-blue w3-round" style="padding: 20px; border: 1px solid black; box-shadow: 5px 5px 4px #888888; width: 50vw;">
+    <h3>Aviso!</h3>
+    <p>Deseja deletar este registro de ordens de serviço.</p>
+    <form method="POST">
+      {%csrf_token%}
+      <button class="w3-button w3-red w3-border" style="margin-top: 20px;" type="submit">Deletar</button>
+    </form>
+  </div>
+</div>
+
 {%endblock%}

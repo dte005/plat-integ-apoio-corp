@@ -1,59 +1,63 @@
 {%extends 'piac-system.html'%}
 {%block conteudo%}
-<div class="align-items-center p-3 my-3 text-white-50 bg-secondary rounded shadow-sm">
-      <!--<img class="mr-3" src="assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">-->
-  <div class="lh-100">
-    <div class="row">
-      <div class="col">
-        <h6 class="mb-0 text-white lh-100">Ordens de Serviço</h6>
-        <small>Lawebsi</small>
-      </div>
-      <div class="col">
-
-      </div>
-      <div class="col">
-        <form class="form-inline">
-          <input type="text" name="pesquisa" id="pesquisa">
-          <button type="submit" class="btn btn-primary btn-sm" name="button">Pesquisar</button>
+<div class="content-right">
+  <div class="content-right-title">
+    <h1>Ordens de serviço</h1>
+    <hr>
+  </div>
+  <div class="content-right-table">
+    <div class="container">
+      <div class="container-search">
+        <h3>Recentes</h3>
+        <form class="form-search">
+          <input type="text" name="pesquisa" id="pesquisa"  class="w3-input w3-border">
+          <button type="submit" class="w3-button w3-red" name="button"><i class="fas fa-search"></i></button>
         </form>
       </div>
+
+      <div>
+          <table class="w3-table">
+            <thead class="w3-black">
+              <tr>
+                <th scope="col" ">OS</th>
+                <th scope="col">Recurso</th>
+                <th scope="col" >GDG</th>
+                <th scope="col" >Mobile</th>
+                <th scope="col" >Qualidade</th>
+                <th scope="col" >Segurança</th>
+                <th scope="col" >Relatório</th>
+                <th scope="col" >Despesas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for dado in dados %}
+              <tr>
+                <th scope="row"><a href="{% url 'detalhar_or' dado.numero %}">{{dado.numero}}</a><a href="{%url 'deletar_ordem' dado.numero %}"><i class="fas fa-trash-alt" style="font-size:15px; margin-left: 10px;"></i></a></th>
+                <td width="120px">
+                {%for index in dado.recursos.all %}
+                  <span>{{index}}</span>
+                {%endfor%}
+                </td>
+                <td><span class="w3-badge">{{dado.gpg_status}}</span></td>
+                <td><span>{{dado.mobile_status}}</span></td>
+                <td><span>{{dado.crol_status}}</span></td>
+                <td><span>{{dado.jsa_status}}</span></td>
+                <td><span>{{dado.rels_status}}</span></td>
+                <td><span>{{dado.reld_status}}</span></td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+      </div>
+
+      <!--Fim do item que irá se repetir no django-->
+
+      <!--fim do container-->
     </div>
 
+    <!--Fim fo content-right-table-->
   </div>
-</div>
 
-<div class="my-3 p-3 bg-white rounded shadow-sm">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr class="grid-row-header">
-          <th scope="col" ">OS</th>
-          <th scope="col">Recurso</th>
-          <th scope="col" >GDG</th>
-          <th scope="col" >Mobile</th>
-          <th scope="col" >Qualidade</th>
-          <th scope="col" >Segurança</th>
-          <th scope="col" >Relatório</th>
-          <th scope="col" >Despesas</th>
-        </tr>
-      </thead>
-      <tbody class="text-dark">
-        {% for dado in dados %}
-        <tr>
-          <th scope="row"><a href="{% url 'detalhar_or' dado.numero %}">{{dado.numero}}</a><a href="{%url 'deletar_ordem' dado.numero %}"><i class="fa fa-trash" aria-hidden="true"></i></a></th>
-          <td width="120px">
-          {%for index in dado.recursos.all %}
-            <span class="badge badge-pill bg-light align-text-bottom">{{index}}</span>
-          {%endfor%}
-          </td>
-          <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.gpg_status}}</span></td>
-          <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.mobile_status}}</span></td>
-          <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.crol_status}}</span></td>
-          <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.jsa_status}}</span></td>
-          <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.rels_status}}</span></td>
-          <td><span class="badge badge-pill bg-light align-text-bottom">{{dado.reld_status}}</span></td>
-        </tr>
-        {%endfor%}
-      </tbody>
-    </table>
-</div>
+  <!--fim do content right-->
+  </div>
   {%endblock%}
