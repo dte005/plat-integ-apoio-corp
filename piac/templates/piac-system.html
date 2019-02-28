@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Plataforma P.I.A.C.</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="description" content=" Plataforma de apoio corporativo para criação e controle de ordens de serviço">
+    <meta name="author" content="Daniel Silva">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/piac-system.css'%}">
+  </head>
+  <body>
+
+      <div class="header">
+        <div class="nav-header">
+          <h4 style="color:white; margin-right: 10px;">Plataforma</h4>
+          <h4 style="background-color: red; color:white;">I.A.C.</h4>
+        </div>
+        <div class="nav-comp">
+          <h4>LAWEBSI</h4>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="nav-left">
+          <ul>
+            <li><a href="{% url 'piac_home' %}"><i class="fas fa-home"></i>Principal</a></li>
+            <li><a href="#"><i class="far fa-lightbulb"></i>Oportunidades</a>
+              <ul>
+                <li><a href="{%url 'lista_oportunidades'%}"><i class="fas fa-list"></i>Listar</a></li>
+                <li><a href="{%url 'criar_op'%}"><i class="fas fa-plus-square"></i>Criar</a></li>
+              </ul>
+            </li>
+            <li><a href="{%url 'lista_ordens'%}"><i class="fas fa-align-justify"></i>Ordens de serviço</a></li>
+            <li><a href="#"><i class="fas fa-cogs"></i>Configurações</a>
+              <ul>
+                <li><a href="{%url 'listar_funcionario'%}"><i class="fas fa-user-alt"></i>Perfil</a></li>
+                <li><a href="/admin/"><i class="fas fa-unlock-alt"></i>Admin</a></li>
+                <li><a href="{%url 'logout'%}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+        {%block conteudo%}
+          <div class="content-right">
+            <div class="content-right-title">
+              <h1>Oportunidades</h1>
+              <hr>
+            </div>
+            <div class="content-right-table">
+              <div class="container">
+                <div class="container-search">
+                  <h3>Recentes</h3>
+                  <form class="form-search">
+                    <input type="text" name="pesquisa" id="pesquisa"  class="w3-input w3-border">
+                    <button type="submit" class="w3-button w3-red" name="button"><i class="fas fa-search"></i></button>
+                  </form>
+                </div>
+
+                {% for dado in dados%}
+                <div class="container-table">
+                  <div class="container-table-id">
+                    <div>
+                      <i class="fas fa-lightbulb" style="color:green;"></i>
+                    </div>
+                    <div>
+                      <a href="{%url 'detalhar_op' dado.id%}">{{dado.nome}}</a>
+                      <p>{{dado.descricao}} <a href="{% url 'deletar_op' dado.id %}"><i class="fas fa-trash-alt" style="font-size:15px;"></i></a></p>
+                    </div>
+                  </div>
+                  <div class="container-table-create">
+                    <a href="{%url 'criar_ordem' dado.id%}" class="w3-button w3-blue"><i class="fas fa-plus-square"> Criar OS</i></a>
+                  </div>
+                </div>
+              {%endfor%}
+              <!--Fim do item que irá se repetir no django-->
+
+              <!--fim do container-->
+              <a href="{%url 'lista_oportunidades'%}" class="w3-button w3-blue" style="margin-top:20px;"><i class="fas fa-redo" style="font-size:20px;"></i> Atualizar</a>
+            </div>
+
+            <!--Fim fo content-right-table-->
+          </div>
+
+          <!--fim do content right-->
+        </div>
+        {%endblock%}
+
+      </div>
+
+  </body>
+</html>

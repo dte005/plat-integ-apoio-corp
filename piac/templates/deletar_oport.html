@@ -1,10 +1,13 @@
-{%extends 'piac_base.html'%}
-{% load bootstrap %}
-{%block title%}PIAC Deletar{%endblock%}
+{%extends 'piac-system.html'%}
 {%block conteudo%}
-<form method="POST">
-  {%csrf_token%}
-  {{form|bootstrap}}
-  <button class="btn btn-danger" type="submit">Deletar</button>
-</form>
+<div style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:80vw;">
+  <div class="w3-panel w3-blue w3-round" style="padding: 20px; border: 1px solid black; box-shadow: 5px 5px 4px #888888;">
+    <h3>Aviso!</h3>
+    <p>Deseja deletar este registro de oportunidades.</p>
+    <form method="POST">
+      {%csrf_token%}
+      <button type="submit" class="w3-button w3-red w3-border" style="margin-top: 20px;">Deletar</button>
+    </form>
+  </div>
+</div>
 {%endblock%}

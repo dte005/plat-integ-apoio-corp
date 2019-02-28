@@ -6,7 +6,7 @@ from .forms import createOportunidadeForm, createOrdemForm
 #import pdb; pdb.set_trace() - ferramenta para debug
 
 def piachome(request):
-    return render(request, 'piac_home.html')
+    return render(request, 'piac-landing.html')
 
 
 @login_required
@@ -19,7 +19,7 @@ def listarOportunidades(request):
     else:
         dados = OportunidadeRecentes.objects.all()
 
-    return render(request, 'listar_oport.html', {'dados':dados})
+    return render(request, 'piac-system.html', {'dados':dados})
 
 
 @login_required
