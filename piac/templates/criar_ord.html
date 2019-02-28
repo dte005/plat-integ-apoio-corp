@@ -1,9 +1,25 @@
 {%extends 'piac-system.html'%}
 {% load bootstrap %}
 {%block conteudo%}
-<form method="POST">
-  {%csrf_token%}
-  {{form|bootstrap}}
-  <button class="btn btn-primary" type="submit">Salvar</button>
-</form>
+<div class="content-right">
+  <div class="content-right-title">
+    <h1>Criar Ordem de serviço</h1>
+    <hr>
+  </div>
+  <div class="content-right-table">
+    <div class="container">
+      <div>
+        <form method="POST">
+          {%csrf_token%}
+          {{form|bootstrap}}
+          <button class="btn btn-primary" type="submit">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+  <!--Fim fo content-right-table-->
+  </div>
+
+<!--fim do content right-->
+</div>
 {%endblock%}
