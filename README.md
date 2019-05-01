@@ -1,5 +1,5 @@
-Plataforma IAC - Meu projeto pessoal de gestão de ordens de serviço
-para utilizar este projeto acesse: https://platintegapoiocorp.herokuapp.com
+Plataforma IAC - Meu projeto pessoal de gestão de ordens de serviço.
+Para utilizar este projeto acesse: https://platintegapoiocorp.herokuapp.com
 
 O que é o projeto?
 O projeto foi idealizado para ser um trabalho de TCC.
